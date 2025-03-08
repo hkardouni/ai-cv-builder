@@ -39,3 +39,16 @@ model Resume {
   @@map("resumes")
 
 }
+
+model WorkExperience {
+    id String @id @default(cuid())
+
+    position String?
+    company String?
+    startDate DateTime?
+    endDate DateTime?
+    description String?
+
+    resumeId String
+    resume Resume @relation(fields: [resumeId], references: [id])
+}
